@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-on:click="onClickButton">＋リストを追加</button>
+    <button @click="onClickButton">＋リストを追加</button>
   </div>
 </template>
 
