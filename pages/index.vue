@@ -3,7 +3,7 @@
     <div>
       <Logo />
       <h1 class="title">
-        羽田羽田
+        羽田
       </h1>
       <div class="links">
         <a
