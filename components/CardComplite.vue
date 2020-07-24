@@ -3,7 +3,9 @@
     <div class="list">
       <div class="placement">
         <div class="text">
-          <p>tinko</p>
+          <li v-for="(task, index) in tasks" :key="index">
+            <span>{{ task.text }}</span>
+          </li>
         </div>
         <div class="button">
           <button>+カードを追加</button>

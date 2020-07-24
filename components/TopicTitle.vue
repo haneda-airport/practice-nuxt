@@ -13,7 +13,19 @@
 </template>
 
 <script>
+/* eslint-disable */
+import { mapMutations } from 'Vuex'
 export default {
+  computed: {
+    tasks() {
+      return this.store.state.tasks.list
+    },
+  },
+  methods: {
+    tasks() {
+      this.$store.commit('task/add', e.target.value)
+    },
+  },
   props: {
     onClickCloseList: {
       type: Function,

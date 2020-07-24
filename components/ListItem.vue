@@ -20,10 +20,10 @@ export default {
       //   console.log(this.isListOpen)
     },
     onClickCloseList() {
-      console.log(this.isListOpen)
-      console.log('click!')
+      // console.log(this.isListOpen)
+      // console.log('click!')
       this.isListOpen = false
-      console.log(this.isListOpen)
+      // console.log(this.isListOpen)
     },
   },
 }

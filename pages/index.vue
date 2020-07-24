@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <ListItemButton />
-    <!-- <TopicTitle /> -->
-    <!-- <CardComplite /> -->
+    <TopicTitle />
+    <CardComplite />
     <CardComplite />
   </div>
 </template>
