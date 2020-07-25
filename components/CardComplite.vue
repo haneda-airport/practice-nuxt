@@ -2,9 +2,14 @@
   <div class="all">
     <div class="list">
       <div class="placement">
-        <div class="text">
+        <!-- <div class="text">
           <p>tinko</p>
-        </div>
+        </div> -->
+        <ul>
+          <li v-for="(task, idx) in tasks" :key="idx">
+            <p>{{ task.text }}</p>
+          </li>
+        </ul>
         <div class="button">
           <button>+カードを追加</button>
           <button>&#8569;</button>
@@ -15,7 +20,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    tasks() {
+      return this.$store.state.tasks.list
+    },
+  },
+}
 </script>
 
 <style scoped>

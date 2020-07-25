@@ -2,7 +2,7 @@
   <div class="list">
     <div class="placement">
       <div class="text">
-        <input type="text" />
+        <input type="text" @keyup.enter="addtask" />
       </div>
       <div class="button">
         <button>リストを追加</button>
@@ -13,7 +13,15 @@
 </template>
 
 <script>
+/* eslint-disable */
+import { mapMutations } from 'vuex'
 export default {
+  methods: {
+    addtask(e) {
+      this.$store.commit('tasks/add', e.target.value)
+      console.log(e.target.value)
+    },
+  },
   props: {
     onClickCloseList: {
       type: Function,
