@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <CardComplite v-if="isCardOpen" :on-click-close-card="onClickCloseCard" />
-    <div v-else class="list">
+  <div class="all">
+    <div class="list">
       <div class="placement">
+        <ul>
+          <li v-for="(task, idx) in tasks" :key="idx">
+            <p>{{ task.text }}</p>
+          </li>
+        </ul>
         <div class="text">
           <input type="text" @keyup.enter="addtask" />
         </div>
         <div class="button">
-          <button @click="onClickCard">リストを追加</button>
-          <button @click="onClickCloseList">&#8569;</button>
+          <button>+カードを追加</button>
+          <button @click="onClickCloseLast">&#8569;</button>
         </div>
       </div>
     </div>
@@ -19,46 +23,41 @@
 /* eslint-disable */
 import { mapMutations } from 'vuex'
 export default {
-  data() {
-    return {
-      isCardOpen: false,
-    }
-  },
   methods: {
     addtask(e) {
       this.$store.commit('tasks/add', e.target.value)
       console.log(e.target.value)
     },
-    onClickCard() {
-      // console.log(this.isListOpen)
-      // console.log('click!')
-      this.isCardOpen = true
-      // console.log('click!')
-    },
-    onClickCloseCard() {
-      // console.log(this.isListOpen)
-      // console.log('click!')
-      this.isCardOpen = false
-      //   console.log(this.isListOpen)
-    },
   },
   props: {
-    onClickCloseList: {
+    onClickCloseLast: {
       type: Function,
+    },
+  },
+  computed: {
+    tasks() {
+      return this.$store.state.tasks.list
     },
   },
 }
 </script>
 
-<style scoped>
+<style>
+.all {
+  text-align: center;
+}
 .list {
   flex-wrap: wrap;
   margin: auto;
   width: 270px;
   height: 70px;
   background-color: gray;
+  display: inline-block;
 }
-.text {
+.plus {
+  display: inline-block;
+}
+li {
   margin-bottom: 10px;
   text-align: left;
 }

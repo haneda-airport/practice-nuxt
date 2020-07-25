@@ -1,18 +1,18 @@
 <template>
-  <div class="all">
-    <div class="list">
-      <div class="placement">
-        <!-- <div class="text">
-          <p>tinko</p>
-        </div> -->
-        <ul>
-          <li v-for="(task, idx) in tasks" :key="idx">
-            <p>{{ task.text }}</p>
-          </li>
-        </ul>
-        <div class="button">
-          <button>+カードを追加</button>
-          <button>&#8569;</button>
+  <div>
+    <last v-if="isLastOpen" :on-click-close-last="onClickCloseLast" />
+    <div v-else class="all">
+      <div class="list">
+        <div class="placement">
+          <ul>
+            <li v-for="(task, idx) in tasks" :key="idx">
+              <p>{{ task.text }}</p>
+            </li>
+          </ul>
+          <div class="button">
+            <button @click="onClickLast">+カードを追加</button>
+            <button @click="onClickCloseCard">&#8569;</button>
+          </div>
         </div>
       </div>
     </div>
@@ -21,6 +21,30 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isLastOpen: false,
+    }
+  },
+  methods: {
+    onClickLast() {
+      // console.log(this.isListOpen)
+      // console.log('click!')
+      this.isLastOpen = true
+      // console.log('click!')
+    },
+    onClickCloseLast() {
+      // console.log(this.isListOpen)
+      // console.log('click!')
+      this.isLastOpen = false
+      //   console.log(this.isListOpen)
+    },
+  },
+  props: {
+    onClickCloseCard: {
+      type: Function,
+    },
+  },
   computed: {
     tasks() {
       return this.$store.state.tasks.list
@@ -44,7 +68,7 @@ export default {
 .plus {
   display: inline-block;
 }
-.text {
+li {
   margin-bottom: 10px;
   text-align: left;
 }
