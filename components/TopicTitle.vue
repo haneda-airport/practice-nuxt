@@ -1,10 +1,10 @@
 <template>
   <div>
-    <CardComplite v-if="isCardOpen" :on-click-close-card="onClickCloseCard" />
+    <last v-if="isCardOpen" :on-click-close-card="onClickCloseCard" />
     <div v-else class="list">
       <div class="placement">
         <div class="text">
-          <input type="text" @keyup.enter="addtask" />
+          <input type="text" @input="addtask" />
         </div>
         <div class="button">
           <button @click="onClickCard">リストを追加</button>
@@ -27,7 +27,7 @@ export default {
   methods: {
     addtask(e) {
       this.$store.commit('tasks/add', e.target.value)
-      console.log(e.target.value)
+      // console.log('e.target.value')
     },
     onClickCard() {
       // console.log(this.isListOpen)

@@ -11,7 +11,7 @@
           </ul>
           <div class="button">
             <button @click="onClickLast">+カードを追加</button>
-            <button @click="onClickCloseCard">&#8569;</button>
+            <!-- <button @click="onClickCloseCard">&#8569;</button> -->
           </div>
         </div>
       </div>
@@ -26,6 +26,16 @@ export default {
       isLastOpen: false,
     }
   },
+  // props: {
+  //   onClickCloseCard: {
+  //     type: Function,
+  //   },
+  // },
+  computed: {
+    tasks() {
+      return this.$store.state.tasks.list
+    },
+  },
   methods: {
     onClickLast() {
       // console.log(this.isListOpen)
@@ -38,16 +48,6 @@ export default {
       // console.log('click!')
       this.isLastOpen = false
       //   console.log(this.isListOpen)
-    },
-  },
-  props: {
-    onClickCloseCard: {
-      type: Function,
-    },
-  },
-  computed: {
-    tasks() {
-      return this.$store.state.tasks.list
     },
   },
 }
